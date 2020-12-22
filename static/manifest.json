@@ -1,0 +1,21 @@
+{
+    "background_color": "#FFFFFF",
+    "theme_color": "#8B008B",
+    "name": "TakeShape Sapper Example",
+    "short_name": "TakeShape Sapper",
+    "display": "minimal-ui",
+    "start_url": "/",
+    "icons": [{
+            "src": "logo-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "logo-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
