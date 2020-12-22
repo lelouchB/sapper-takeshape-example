@@ -13,7 +13,7 @@
 1. Use the **Deploy to TakeShape** button to create the project in TakeShape.
 2. Set up and run the client application
 
-   1. `git clone https://github.com/lelouchB/sapper-takeshape-example && cd takeshape-next-blog`
+   1. `git clone https://github.com/lelouchB/sapper-takeshape-example && cd sapper-takeshape-example`
    1. `npm install` - This will install all dependencies
 
 3. Add your TakeShape project's id and API key to `.env` file.
