@@ -1,0 +1,6 @@
+name: sapper-takeshape-example
+description: Using TakeShape CMS with Sapper.
+icon: pen-tool
+categories:
+  - examples
+  - quickstart
