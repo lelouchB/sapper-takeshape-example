@@ -1,3 +1,5 @@
+<!-- src/routes/blog/index.svelte -->
+
 <script context="module">
 	export async function preload(page, session) {
 		const { TAKESHAPE_API_KEY, TAKESHAPE_PROJECT } = session;
@@ -30,7 +32,7 @@
 		if (res.status === 200) {
 			return { posts: json.data.allPosts.items };
 		} else {
-			this.error(res.status, json && json.errors);
+			this.error(res.status, json);
 		}
 	}
 </script>
