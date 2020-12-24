@@ -1,28 +1,36 @@
-import posts from './_posts.js';
+const fetch = require("node-fetch");
 
-const lookup = new Map();
-posts.forEach(post => {
-	lookup.set(post.slug, JSON.stringify(post));
-});
+export async function get(req, res, next) {
+  const { slug } = req.params;
 
-export function get(req, res, next) {
-	// the `slug` parameter is available because
-	// this file is called [slug].json.js
-	const { slug } = req.params;
+  const { TAKESHAPE_API_KEY, TAKESHAPE_PROJECT } = process.env;
+  const post = await fetch(
+    `https://api.takeshape.io/project/${TAKESHAPE_PROJECT}/v3/graphql`,
+    {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TAKESHAPE_API_KEY}`,
+      },
+      body: JSON.stringify({
+        query: `
+		query PostBySlug($slug: String) {
+			post: getPostList(where: {slug: {eq: $slug}}) {
+			items {
+				_id
+				title
+				deck
+				bodyHtml
+			}
+			}
+		}`,
+        variables: {
+          slug: slug,
+        },
+      }),
+    }
+  );
 
-	if (lookup.has(slug)) {
-		res.writeHead(200, {
-			'Content-Type': 'application/json'
-		});
-
-		res.end(lookup.get(slug));
-	} else {
-		res.writeHead(404, {
-			'Content-Type': 'application/json'
-		});
-
-		res.end(JSON.stringify({
-			message: `Not found`
-		}));
-	}
+  const response = await post.json();
+  res.end(JSON.stringify(response.data.post.items[0]));
 }

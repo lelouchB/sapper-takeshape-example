@@ -1,39 +1,14 @@
 <script context="module">
-	export async function preload(page, session) {
-		const { TAKESHAPE_API_KEY, TAKESHAPE_PROJECT } = session;
-		const res = await this.fetch(
-			`https://api.takeshape.io/project/${TAKESHAPE_PROJECT}/v3/graphql`,
-			{
-				method: "post",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${TAKESHAPE_API_KEY}`,
-				},
-				body: JSON.stringify({
-					query: `
-		query PostBySlug($slug: String) {
-			post: getPostList(where: {slug: {eq: $slug}}) {
-			items {
-				_id
-				title
-				deck
-				bodyHtml
-			}
-			}
-		}`,
-					variables: {
-						slug: page.params.slug,
-					},
-				}),
-			}
-		);
-
+	export async function preload({ params }) {
+		// the `slug` parameter is available because
+		// this file is called [slug].svelte
+		const res = await this.fetch(`blog/${params.slug}.json`);
 		const data = await res.json();
 
 		if (res.status === 200) {
-			return { post: data.data.post.items[0] };
+			return { post: data };
 		} else {
-			this.error(res.status);
+			this.error(res.status, data.message);
 		}
 	}
 </script>
@@ -43,7 +18,6 @@
 </script>
 
 <style>
-	
 	.content :global(h2) {
 		font-size: 1.4em;
 		font-weight: 500;

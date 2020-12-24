@@ -1,39 +1,11 @@
 <!-- src/routes/blog/index.svelte -->
-
 <script context="module">
-	export async function preload(page, session) {
-		const { TAKESHAPE_API_KEY, TAKESHAPE_PROJECT } = session;
-
-		const res = await this.fetch(
-			`https://api.takeshape.io/project/${TAKESHAPE_PROJECT}/v3/graphql`,
-			{
-				method: "post",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${TAKESHAPE_API_KEY}`,
-				},
-				body: JSON.stringify({
-					query: `
-						query AllPosts {
-							allPosts: getPostList {
-								items {
-								_id
-								title
-								slug
-								}
-							}
-						}
-    `,
-				}),
-			}
-		);
-		const json = await res.json();
-
-		if (res.status === 200) {
-			return { posts: json.data.allPosts.items };
-		} else {
-			this.error(res.status, json);
-		}
+	export function preload() {
+		return this.fetch(`blog.json`)
+			.then((r) => r.json())
+			.then((posts) => {
+				return { posts };
+			});
 	}
 </script>
 

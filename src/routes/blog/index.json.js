@@ -1,16 +1,36 @@
-import posts from './_posts.js';
+const fetch = require("node-fetch");
 
-const contents = JSON.stringify(posts.map(post => {
-	return {
-		title: post.title,
-		slug: post.slug
-	};
-}));
+export async function get(req, res) {
+  const { TAKESHAPE_API_KEY, TAKESHAPE_PROJECT } = process.env;
 
-export function get(req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'application/json'
-	});
+  const data = await fetch(
+    `https://api.takeshape.io/project/${TAKESHAPE_PROJECT}/v3/graphql`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${TAKESHAPE_API_KEY}`,
+      },
+      body: JSON.stringify({
+        query: `
+  					  query AllPosts {
+  						  allPosts: getPostList {
+  							  items {
+  							  _id
+  							  title
+  							  slug
+  							  }
+  						  }
+  					  }
+    `,
+      }),
+    }
+  );
+  const response = await data.json();
 
-	res.end(contents);
+  res.writeHead(200, {
+    "Content-Type": "application/json",
+  });
+
+  res.end(JSON.stringify(response.data.allPosts.items));
 }
