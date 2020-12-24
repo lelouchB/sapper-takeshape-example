@@ -27,10 +27,11 @@ export async function get(req, res) {
     }
   );
   const response = await data.json();
+  const posts = await JSON.stringify(response.data.allPosts.items);
 
   res.writeHead(200, {
     "Content-Type": "application/json",
   });
 
-  res.end(JSON.stringify(response.data.allPosts.items));
+  res.end(posts);
 }
