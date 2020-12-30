@@ -42,10 +42,10 @@
 	<title>TakeShape Sapper Example</title>
 	<meta
 		name="Description"
-		content="Demo project showcasing how to use TakeShape CMS with Sapper" />
+		content="Demo project showcasing how to use TakeShape with Sapper" />
 </svelte:head>
 
-<h1><a href="https://www.takeshape.io/">TakeShape CMS!</a></h1>
+<h1><a href="https://www.takeshape.io/">TakeShape !</a></h1>
 
 <figure>
 	<img alt="Success Kid" src={successkid} />
@@ -54,8 +54,7 @@
 
 <p>
 	<strong>Tutorial :
-		<a href="https://www.takeshape.io/articles/">Using TakeShape CMS with
-			Sapper</a></strong>
+		<a href="https://www.takeshape.io/articles/">Using TakeShape with Sapper</a></strong>
 </p>
 
 <p>

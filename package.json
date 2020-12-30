@@ -1,6 +1,6 @@
 {
     "name": "sapper-takeshape-example",
-    "description": "Demo project showcasing how to use TakeShape CMS with Sapper",
+    "description": "Demo project showcasing how to use TakeShape with Sapper",
     "version": "0.0.1",
     "author": "Ashutosh K Singh",
     "license": "MIT",

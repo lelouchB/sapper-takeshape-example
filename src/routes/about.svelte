@@ -4,11 +4,11 @@
 
 <h1>About this Project</h1>
 
-<p>Using TakeShape CMS with Sapper.</p>
+<p>Using TakeShape with Sapper.</p>
 
 <p>
 	<strong>Tutorial :
-		<a href="https://www.takeshape.io/articles/">Using TakeShape CMS with
+		<a href="https://www.takeshape.io/articles/">Using TakeShape with
 			Sapper</a></strong>
 </p>
 
