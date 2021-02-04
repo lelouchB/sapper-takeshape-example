@@ -4,7 +4,7 @@
 [![homepage](https://i.imgur.com/3hO1MWy.gif)](https://sapper-takeshape-example.vercel.app/)
 
 
-### Tutorial: [Using TakeShape with Sapper](https://www.takeshape.io/articles/)
+### Tutorial: [Using TakeShape with Sapper](https://www.takeshape.io/articles/using-takeshape-with-sapper/)
 
 ## Quickstart
 
