@@ -8,7 +8,7 @@
 
 <p>
 	<strong>Tutorial :
-		<a href="https://www.takeshape.io/articles/">Using TakeShape with
+		<a href="https://www.takeshape.io/articles/using-takeshape-with-sapper/">Using TakeShape with
 			Sapper</a></strong>
 </p>
 
